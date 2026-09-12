@@ -4,89 +4,470 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Luna Beauty Studio</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;color:#222;background:#fff}
-header{padding:22px 8%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee}
-.logo{font-size:24px;font-weight:bold}
-nav a{margin-left:25px;text-decoration:none;color:#222}
-.hero{text-align:center;padding:100px 20px;background:#faf7f8}
-.hero h1{font-size:52px;margin-bottom:20px}
-.hero p{font-size:20px;color:#666;margin-bottom:30px}
-.btn{display:inline-block;background:#222;color:#fff;padding:15px 28px;text-decoration:none;border-radius:6px}
-section{padding:70px 8%;text-align:center}
-h2{font-size:34px;margin-bottom:40px}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{padding:30px;border:1px solid #eee;border-radius:10px}
-.card h3{margin-bottom:12px;font-size:21px}
-.card p{color:#666}
-.about{background:#faf7f8}
-footer{text-align:center;padding:30px;background:#222;color:#fff}
+
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#0b0b0d;
+color:#f5f1ed;
+line-height:1.6;
+}
+
+header{
+position:sticky;
+top:0;
+z-index:10;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px 7%;
+background:rgba(11,11,13,.88);
+backdrop-filter:blur(16px);
+border-bottom:1px solid #242124;
+}
+
+.logo{
+font-size:21px;
+font-weight:700;
+letter-spacing:2px;
+}
+
+.logo span{color:#d7a6b8}
+
+nav a{
+color:#aaa;
+text-decoration:none;
+margin-left:28px;
+font-size:14px;
+transition:.3s;
+}
+
+nav a:hover{color:#fff}
+
+.hero{
+min-height:88vh;
+display:flex;
+align-items:center;
+padding:80px 7%;
+background:
+linear-gradient(90deg,rgba(11,11,13,.96),rgba(11,11,13,.45)),
+url("https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1800&q=90");
+background-size:cover;
+background-position:center;
+}
+
+.hero-content{max-width:720px}
+
+.eyebrow{
+color:#d7a6b8;
+font-size:12px;
+letter-spacing:4px;
+text-transform:uppercase;
+margin-bottom:22px;
+}
+
+h1{
+font-size:clamp(55px,8vw,105px);
+line-height:.92;
+letter-spacing:-5px;
+margin-bottom:28px;
+}
+
+.hero p{
+font-size:19px;
+color:#c2bdc0;
+max-width:570px;
+margin-bottom:35px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 28px;
+background:#f5f1ed;
+color:#111;
+text-decoration:none;
+font-weight:700;
+border-radius:3px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+background:#d7a6b8;
+}
+
+section{padding:100px 7%}
+
+.section-top{
+display:flex;
+justify-content:space-between;
+align-items:end;
+gap:30px;
+margin-bottom:55px;
+}
+
+.section-label{
+color:#d7a6b8;
+font-size:11px;
+letter-spacing:4px;
+text-transform:uppercase;
+}
+
+h2{
+font-size:48px;
+letter-spacing:-2px;
+}
+
+.section-top p{
+color:#8f898d;
+max-width:400px;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.card{
+position:relative;
+min-height:290px;
+padding:30px;
+border:1px solid #29262a;
+background:#111114;
+display:flex;
+flex-direction:column;
+justify-content:end;
+transition:.35s;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-7px);
+border-color:#d7a6b8;
+}
+
+.card-number{
+position:absolute;
+top:25px;
+right:25px;
+color:#555;
+font-size:13px;
+}
+
+.card h3{
+font-size:25px;
+margin-bottom:8px;
+}
+
+.card p{color:#8f898d}
+
+.price{
+margin-top:18px;
+color:#d7a6b8;
+font-weight:700;
+}
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+background:#111114;
+}
+
+.about-image{
+height:560px;
+background:
+linear-gradient(0deg,rgba(0,0,0,.2),rgba(0,0,0,.1)),
+url("https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=90");
+background-size:cover;
+background-position:center;
+}
+
+.about-text p{
+color:#aaa;
+font-size:18px;
+margin-top:25px;
+max-width:520px;
+}
+
+.stats{
+display:flex;
+gap:50px;
+margin-top:40px;
+}
+
+.stat strong{
+display:block;
+font-size:30px;
+}
+
+.stat span{
+color:#777;
+font-size:13px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+height:360px;
+object-fit:cover;
+display:block;
+}
+
+.gallery img:first-child{height:735px}
+
+.cta{
+text-align:center;
+padding:120px 7%;
+background:
+linear-gradient(rgba(11,11,13,.72),rgba(11,11,13,.92)),
+url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1800&q=90");
+background-size:cover;
+background-position:center;
+}
+
+.cta h2{
+font-size:64px;
+margin:15px auto 25px;
+max-width:800px;
+}
+
+.cta p{
+color:#bbb;
+margin-bottom:35px;
+}
+
+footer{
+padding:30px 7%;
+display:flex;
+justify-content:space-between;
+color:#666;
+font-size:13px;
+border-top:1px solid #242124;
+}
+
+@media(max-width:800px){
+nav{display:none}
+
+.hero{min-height:78vh}
+
+.services{
+grid-template-columns:1fr;
+}
+
+.about{
+grid-template-columns:1fr;
+}
+
+.about-image{height:400px}
+
+.gallery{
+grid-template-columns:1fr;
+}
+
+.gallery img,
+.gallery img:first-child{
+height:380px;
+}
+
+.section-top{
+display:block;
+}
+
+.section-top p{margin-top:20px}
+
+h2{font-size:38px}
+
+.cta h2{
+font-size:45px;
+}
+
+footer{
+display:block;
+text-align:center;
+}
+
+footer div{margin-top:8px}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="logo">Luna Beauty Studio</div>
+<div class="logo">LUNA <span>BEAUTY</span></div>
+
 <nav>
 <a href="#services">Services</a>
 <a href="#about">About</a>
-<a href="#booking">Booking</a>
+<a href="#gallery">Gallery</a>
+<a href="#booking">Book</a>
 </nav>
 </header>
 
 <section class="hero">
-<h1>Feel Beautiful. Be You.</h1>
-<p>Professional beauty services for lashes, brows and nails.</p>
-<a class="btn" href="#booking">Book an Appointment</a>
+<div class="hero-content">
+
+<div class="eyebrow">Beauty • Care • Confidence</div>
+
+<h1>Beauty,<br>redefined.</h1>
+
+<p>
+Premium beauty treatments designed to make you feel confident,
+comfortable and completely yourself.
+</p>
+
+<a href="#booking" class="btn">Book an Appointment</a>
+
+</div>
 </section>
 
 <section id="services">
+
+<div class="section-top">
+<div>
+<div class="section-label">What we offer</div>
 <h2>Our Services</h2>
+</div>
+
+<p>
+Thoughtfully designed beauty treatments with a modern,
+personal approach.
+</p>
+</div>
+
 <div class="services">
+
 <div class="card">
+<div class="card-number">01</div>
 <h3>Lash Extensions</h3>
-<p>From €45</p>
+<p>Natural or dramatic lashes tailored to your style.</p>
+<div class="price">From €45</div>
 </div>
+
 <div class="card">
+<div class="card-number">02</div>
 <h3>Lash Lift</h3>
-<p>From €35</p>
+<p>A soft, lifted look with a beautiful natural finish.</p>
+<div class="price">From €35</div>
 </div>
+
 <div class="card">
+<div class="card-number">03</div>
 <h3>Brow Styling</h3>
-<p>From €20</p>
+<p>Clean, defined brows shaped to suit your features.</p>
+<div class="price">From €20</div>
 </div>
+
 <div class="card">
+<div class="card-number">04</div>
 <h3>Manicure</h3>
-<p>From €25</p>
+<p>Professional nail care with a clean modern finish.</p>
+<div class="price">From €25</div>
 </div>
+
 <div class="card">
+<div class="card-number">05</div>
 <h3>Gel Nails</h3>
-<p>From €35</p>
+<p>Long-lasting colour and a polished premium finish.</p>
+<div class="price">From €35</div>
 </div>
+
 <div class="card">
+<div class="card-number">06</div>
 <h3>Brow Lamination</h3>
-<p>From €30</p>
+<p>Fuller-looking brows with a sleek defined shape.</p>
+<div class="price">From €30</div>
 </div>
+
 </div>
 </section>
 
 <section id="about" class="about">
-<h2>Why Luna Beauty?</h2>
-<p>Professional beauty treatments in a comfortable and welcoming environment.</p>
+
+<div class="about-image"></div>
+
+<div class="about-text">
+<div class="section-label">About Luna</div>
+<h2>Confidence starts with feeling good.</h2>
+
+<p>
+Luna Beauty Studio combines modern beauty treatments
+with a calm, welcoming atmosphere. Every appointment
+is focused on detail, quality and your individual style.
+</p>
+
+<div class="stats">
+<div class="stat">
+<strong>6</strong>
+<span>Signature services</span>
+</div>
+
+<div class="stat">
+<strong>24/7</strong>
+<span>Online enquiries</span>
+</div>
+
+<div class="stat">
+<strong>100%</strong>
+<span>Attention to detail</span>
+</div>
+</div>
+</div>
+
 </section>
 
-<section id="booking">
-<h2>Ready to Book?</h2>
-<p style="margin-bottom:25px;color:#666">Choose your service and contact us to arrange your appointment.</p>
-<a class="btn" href="mailto:hello@lunabeauty.example">Book Now</a>
+<section id="gallery">
+
+<div class="section-top">
+<div>
+<div class="section-label">The studio</div>
+<h2>Beauty in detail.</h2>
+</div>
+</div>
+
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1200&q=90">
+<img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=900&q=90">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=90">
+<img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=900&q=90">
+</div>
+
+</section>
+
+<section id="booking" class="cta">
+
+<div class="section-label">Ready when you are</div>
+
+<h2>Your next beauty appointment starts here.</h2>
+
+<p>
+Choose your treatment and get in touch with Luna Beauty Studio.
+</p>
+
+<a class="btn" href="mailto:hello@lunabeauty.example?subject=Booking%20Request">
+Book Now
+</a>
+
 </section>
 
 <footer>
-Luna Beauty Studio © 2026 — Demo Website
+<div>LUNA BEAUTY STUDIO</div>
+<div>Demo Website © 2026</div>
 </footer>
 
-  <script src="//code.tidio.co/xdwiwu6e5vzp1nhnauueyjeimo5smorg.js" async></script>
+<script src="//code.tidio.co/xdiwu6e5vzp1nhauueyjeimo5smor8.js" async></script>
+
 </body>
 </html>
