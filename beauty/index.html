@@ -446,21 +446,200 @@ is focused on detail, quality and your individual style.
 
 </section>
 
-<section id="booking" class="cta">
+<section id="booking" class="booking">
+<div class="booking-wrap">
 
-<div class="section-label">Ready when you are</div>
+<div class="booking-intro">
+<div class="section-label">BOOK AN APPOINTMENT</div>
+<h2>Let's create your perfect look.</h2>
+<p>Tell us what you'd like and we'll get back to you to arrange your appointment.</p>
+</div>
 
-<h2>Your next beauty appointment starts here.</h2>
+<form id="bookingForm" class="booking-form">
 
-<p>
-Choose your treatment and get in touch with Luna Beauty Studio.
+<div class="form-row">
+<div>
+<label>Full Name</label>
+<input type="text" id="name" required>
+</div>
+
+<div>
+<label>Email</label>
+<input type="email" id="email" required>
+</div>
+</div>
+
+<div class="form-row">
+<div>
+<label>Phone</label>
+<input type="tel" id="phone" required>
+</div>
+
+<div>
+<label>Service</label>
+<select id="service" required>
+<option value="">Choose a service</option>
+<option>Lash Extensions</option>
+<option>Lash Lift</option>
+<option>Brow Styling</option>
+<option>Manicure</option>
+<option>Gel Nails</option>
+<option>Brow Lamination</option>
+</select>
+</div>
+</div>
+
+<div>
+<label>Preferred Date</label>
+<input type="date" id="date" required>
+</div>
+
+<div>
+<label>Message</label>
+<textarea id="message" rows="5" placeholder="Tell us anything you'd like us to know..."></textarea>
+</div>
+
+<button type="submit" class="booking-btn">Send Booking Request</button>
+
+<p class="form-note">
+Your email app will open with the booking request prepared.
 </p>
 
-<a class="btn" href="mailto:hello@lunabeauty.example?subject=Booking%20Request">
-Book Now
-</a>
-
+</form>
+</div>
 </section>
+
+<style>
+.booking{
+background:#111114;
+padding:110px 7%;
+}
+
+.booking-wrap{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:start;
+}
+
+.booking-intro h2{
+font-size:clamp(42px,5vw,65px);
+line-height:1;
+letter-spacing:-2px;
+margin:18px 0 25px;
+}
+
+.booking-intro p{
+color:#999;
+font-size:17px;
+max-width:430px;
+}
+
+.booking-form{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.form-row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+}
+
+.booking-form label{
+display:block;
+color:#aaa;
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:1.5px;
+margin-bottom:8px;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea{
+width:100%;
+padding:15px;
+background:#0b0b0d;
+color:#fff;
+border:1px solid #302d31;
+border-radius:3px;
+font-family:inherit;
+outline:none;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus{
+border-color:#d7a6b8;
+}
+
+.booking-form textarea{
+resize:vertical;
+}
+
+.booking-btn{
+padding:17px 25px;
+border:0;
+background:#f5f1ed;
+color:#111;
+font-weight:700;
+cursor:pointer;
+border-radius:3px;
+transition:.3s;
+}
+
+.booking-btn:hover{
+background:#d7a6b8;
+transform:translateY(-2px);
+}
+
+.form-note{
+color:#666;
+font-size:12px;
+}
+
+@media(max-width:800px){
+.booking-wrap{
+grid-template-columns:1fr;
+gap:45px;
+}
+
+.form-row{
+grid-template-columns:1fr;
+}
+}
+</style>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const phone = document.getElementById("phone").value;
+const service = document.getElementById("service").value;
+const date = document.getElementById("date").value;
+const message = document.getElementById("message").value;
+
+const subject = encodeURIComponent("New Luna Beauty Booking Request");
+
+const body = encodeURIComponent(
+"Name: " + name +
+"\nEmail: " + email +
+"\nPhone: " + phone +
+"\nService: " + service +
+"\nPreferred date: " + date +
+"\nMessage: " + message
+);
+
+window.location.href =
+"mailto:hello@lunabeauty.example?subject=" + subject + "&body=" + body;
+});
+</script>
 
 <footer>
 <div>LUNA BEAUTY STUDIO</div>
